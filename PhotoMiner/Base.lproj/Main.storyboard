@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -109,11 +109,11 @@
             <objects>
                 <viewController storyboardIdentifier="TitlebarController" showSeguePresentationStyle="single" id="wo0-ub-Urj" customClass="TitlebarController" customModule="PhotoMiner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="bBq-kg-Pkg">
-                        <rect key="frame" x="0.0" y="0.0" width="820" height="31"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-0w-ZTD">
-                                <rect key="frame" x="68" y="7" width="662" height="17"/>
+                                <rect key="frame" x="68" y="6" width="88" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="PhotoMiner" id="Q1P-W8-6UM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -124,7 +124,7 @@
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fo8-IL-FaX">
-                                <rect key="frame" x="668" y="4" width="36" height="23"/>
+                                <rect key="frame" x="666" y="2" width="36" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="DFh-TL-oh5"/>
                                 </constraints>
@@ -137,10 +137,10 @@
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Zb-5d-s0Y">
-                                <rect key="frame" x="712" y="8" width="16" height="16"/>
+                                <rect key="frame" x="710" y="6" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1nx-2V-Q21">
-                                <rect key="frame" x="734" y="4" width="36" height="23"/>
+                                <rect key="frame" x="734" y="2" width="36" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="8kZ-Bg-oUy"/>
                                 </constraints>
@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AcS-by-NKZ">
-                                <rect key="frame" x="778" y="4" width="36" height="23"/>
+                                <rect key="frame" x="778" y="2" width="36" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="o6C-PQ-9Wm"/>
                                 </constraints>
@@ -165,15 +165,34 @@
                                     <action selector="sidebarButtonPressed:" target="wo0-ub-Urj" id="1TI-wA-JZP"/>
                                 </connections>
                             </button>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-4c-QSb">
+                                <rect key="frame" x="169" y="4" width="480" height="20"/>
+                                <segmentedCell key="cell" enabled="NO" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="roundRect" trackingMode="selectOne" id="7zg-p8-SmL">
+                                    <font key="font" metaFont="cellTitle"/>
+                                    <segments>
+                                        <segment label="All" selected="YES"/>
+                                        <segment label="Location" tag="1"/>
+                                        <segment label="Downloaded"/>
+                                        <segment label="Screenshots"/>
+                                        <segment label="Pets"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="segmentControlChanged:" target="wo0-ub-Urj" id="ohj-Z7-RXf"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="7Zb-5d-s0Y" firstAttribute="trailing" secondItem="nJc-0w-ZTD" secondAttribute="trailing" id="ATk-vG-Pzb"/>
-                            <constraint firstItem="1nx-2V-Q21" firstAttribute="leading" secondItem="nJc-0w-ZTD" secondAttribute="trailing" constant="6" id="DRd-TX-1nn"/>
+                            <constraint firstItem="Kaf-4c-QSb" firstAttribute="leading" secondItem="nJc-0w-ZTD" secondAttribute="trailing" constant="16" id="1tr-75-eml"/>
+                            <constraint firstAttribute="bottom" secondItem="Kaf-4c-QSb" secondAttribute="bottom" constant="5" id="4Eq-81-gMF"/>
+                            <constraint firstItem="Kaf-4c-QSb" firstAttribute="top" secondItem="bBq-kg-Pkg" secondAttribute="top" constant="5" id="5zE-BZ-NXh"/>
                             <constraint firstItem="nJc-0w-ZTD" firstAttribute="centerY" secondItem="bBq-kg-Pkg" secondAttribute="centerY" id="Hf3-R1-MlF"/>
                             <constraint firstItem="7Zb-5d-s0Y" firstAttribute="leading" secondItem="fo8-IL-FaX" secondAttribute="trailing" constant="8" id="IwQ-kf-6Sw"/>
                             <constraint firstAttribute="trailing" secondItem="AcS-by-NKZ" secondAttribute="trailing" constant="6" id="OU8-tO-jih"/>
                             <constraint firstItem="AcS-by-NKZ" firstAttribute="centerY" secondItem="bBq-kg-Pkg" secondAttribute="centerY" id="Zd2-Ju-BES"/>
                             <constraint firstItem="nJc-0w-ZTD" firstAttribute="leading" secondItem="bBq-kg-Pkg" secondAttribute="leading" constant="70" id="ax5-el-WYv"/>
+                            <constraint firstItem="1nx-2V-Q21" firstAttribute="leading" secondItem="7Zb-5d-s0Y" secondAttribute="trailing" constant="8" id="bZb-SV-VGG"/>
+                            <constraint firstItem="fo8-IL-FaX" firstAttribute="leading" secondItem="Kaf-4c-QSb" secondAttribute="trailing" constant="18" id="gJF-LF-gMz"/>
                             <constraint firstItem="1nx-2V-Q21" firstAttribute="centerY" secondItem="bBq-kg-Pkg" secondAttribute="centerY" id="hzi-9T-z5U"/>
                             <constraint firstItem="7Zb-5d-s0Y" firstAttribute="centerY" secondItem="bBq-kg-Pkg" secondAttribute="centerY" id="nBa-ta-Kt3"/>
                             <constraint firstItem="AcS-by-NKZ" firstAttribute="leading" secondItem="1nx-2V-Q21" secondAttribute="trailing" constant="8" id="spz-f5-U53"/>
@@ -183,6 +202,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="fo8-IL-FaX" id="Q6e-qp-bab"/>
                         <outlet property="progressIndicator" destination="7Zb-5d-s0Y" id="CAQ-1Y-Rx2"/>
+                        <outlet property="segmentedControl" destination="Kaf-4c-QSb" id="y9E-0f-xJ0"/>
                         <outlet property="sidebarButton" destination="AcS-by-NKZ" id="uYd-xj-NwP"/>
                         <outlet property="titleField" destination="nJc-0w-ZTD" id="nYk-BI-LGV"/>
                     </connections>
@@ -714,10 +734,10 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="Cancel" width="32" height="32"/>
+        <image name="Cancel" width="16" height="16"/>
         <image name="DropIcon" width="78" height="81"/>
-        <image name="Magnifier" width="32" height="32"/>
-        <image name="SidebarOff" width="32" height="32"/>
+        <image name="Magnifier" width="16" height="16"/>
+        <image name="SidebarOff" width="16" height="16"/>
         <namedColor name="DropAreaTextColor">
             <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

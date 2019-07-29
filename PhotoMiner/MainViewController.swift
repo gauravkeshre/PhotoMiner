@@ -10,6 +10,8 @@ import Cocoa
 import Quartz
 
 class MainViewController: NSViewController {
+   
+    static var instance: MainViewController?
 	
 	@IBOutlet weak var collectionView: PhotoCollectionView!
 	@IBOutlet weak var collectionViewFlowLayout: NSCollectionViewFlowLayout!
@@ -23,8 +25,6 @@ class MainViewController: NSViewController {
 	private var reloadHelperArray = [ImageData]()
 	
 	private var storyboardDescriptionString = ""
-	
-	static var instance:MainViewController?
 	
 	private var _dropViewVisible = true
 	var isDropViewVisible:Bool {

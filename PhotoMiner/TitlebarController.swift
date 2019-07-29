@@ -11,6 +11,7 @@ import Cocoa
 protocol TitlebarDelegate {
 	func titlebar(_ controller: TitlebarController, scanButtonPressed sender: NSButton)
 	func titlebar(_ controller: TitlebarController, cancelButtonPressed sender: NSButton)
+    func titlebar(_ controller: TitlebarController, didChangeGrouping to: NSInteger)
 	func titlebarSidebarToggled(_ controller: TitlebarController)
 }
 
@@ -20,7 +21,7 @@ class TitlebarController: NSViewController {
 	static let sidebarOffNotification = Notification.Name("TitlebarSidebarOff")
 	
 	var delegate:TitlebarDelegate?
-	
+	@IBOutlet private weak var segmentedControl: NSSegmentedControl!
 	@IBOutlet private weak var titleField: NSTextField!
 	@IBOutlet private weak var cancelButton: NSButton!
 	@IBOutlet private weak var sidebarButton: NSButton!
@@ -61,17 +62,22 @@ class TitlebarController: NSViewController {
 	@IBAction func sidebarButtonPressed(_ sender: NSButton) {
 		delegate?.titlebarSidebarToggled(self)
 	}
+    @IBAction func segmentControlChanged(_ sender: NSSegmentedControl) {
+     delegate?.titlebar(self, didChangeGrouping: sender.indexOfSelectedItem)
+    }
 	
 	func progressOn(_ progress: Bool) {
 		if progress {
 			progressIndicator.startAnimation(self)
 			progressIndicator.isHidden = false
 			cancelButton.isHidden = false
+            segmentedControl.isEnabled = false
 		}
 		else {
 			progressIndicator.stopAnimation(self)
 			progressIndicator.isHidden = true
 			cancelButton.isHidden = true
+            segmentedControl.isEnabled = true
 		}
 	}
 	
@@ -83,7 +89,11 @@ class TitlebarController: NSViewController {
 				: NSLocalizedString("picture", comment: "Picture count: 1 picture")
 			
 			titleField.stringValue = String(format: "%@ (%d %@)", titleField.stringValue, totalCount, countLabel)
-		}
+            
+            segmentedControl.isEnabled = true
+        }else {
+            segmentedControl.isEnabled = false
+        }
 	}
 	
 	func showSettings() {

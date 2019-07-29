@@ -8,14 +8,20 @@
 
 import Cocoa
 
+protocol HomeControllerProtocol {
+    static var instance: HomeControllerProtocol? {get}
+    var collectionView: PhotoCollectionView! {get set}
+    var isDropViewVisible: Bool {get set}
+    var dropViewText: String? {get set }
+}
+
 class MainWindowController: NSWindowController {
-	
 	let scanner = Scanner()
 	var titlebarController: TitlebarController? = nil
 	
-	var mainViewController:MainViewController? {
+	var mainViewController: MainViewController? {
 		get {
-			return MainViewController.instance
+            return MainViewController.instance
 		}
 	}
 	
@@ -157,7 +163,11 @@ extension MainWindowController: NSWindowDelegate {
 
 // MARK: - TitlebarDelegate methods
 extension MainWindowController: TitlebarDelegate {
-	
+
+    func titlebar(_ controller: TitlebarController, didChangeGrouping to: NSInteger) {
+
+    }
+    
 	func titlebar(_ controller: TitlebarController, scanButtonPressed sender: NSButton) {
 		let dialog = NSOpenPanel()
 		
@@ -195,6 +205,7 @@ extension MainWindowController: TitlebarDelegate {
 	func titlebarSidebarToggled(_ controller: TitlebarController) {
 		MainSplitViewController.instance?.toggleSidebar(self)
 	}
+    
 	
 }
 
